@@ -29,7 +29,7 @@ function preload(){
 }
 
 function setup(){
-  createCanvas(700,400);
+  createCanvas(700,800);
   
   pig = createSprite(650,330,20,20);
   pig.addImage(pigImage);
@@ -59,8 +59,8 @@ function draw(){
   
   
   if(gameState === PLAY){
-    if (pig.x<30){
-      ground.x = ground.width/2;
+    if (ground.x>700){
+      ground.x = width/2;
     }
   
   if(keyDown("space")&&pig.y>=100){
@@ -109,12 +109,13 @@ function spawnBird(){
   if(frameCount % 60 === 0){
     var bird = createSprite(Math.round(random(50,-1000)),330,20,20);
     bird.velocityX = 6;
-    
+    bird.scale = 1;
     var rand = Math.round(random(1,4));
     switch(rand){
           case 1: bird.addImage(bird1Image);
           break;
           case 2: bird.addImage(bird2Image);
+          bird.scale = 4;
           break;
           case 3: bird.addImage(bird3Image);
           break;
